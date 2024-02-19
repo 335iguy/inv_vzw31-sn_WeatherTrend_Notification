@@ -7,10 +7,15 @@ This is **IN PROGRESS AND INCOMPLETE**. Please see [Inovelli Community - VZW31-S
 **Current Configuration:**  
   
 Ive set up a script for each group of commands that needs to be run. All of these use the `zwave_js.multicast_set_value` for each call. A total of 7 calls have to be made for each LED.
-Here's what I have so far:  
-* One for duration  
+Here's what I have so far for script:  
+* One for duration change
+* One for duration reset  
 * Two for color selection  
 * One for effect  
-* One for level (although this one will likely be a one-off command for the time being)  
-* An automation that turns the LEDs off prior to the changes and then executes the scripts  
+* One for level  
+* One for level reset  
+Automations:  
+* One for rising temp: pre-sets the params at the 59th minute, executes the duration script at the top of the hour, then resets the duration and levels. Only on the condition that the temp change threshold has been reached.  
+* Same as above but for the falling temp.  
+Sensor(s):  
 * A trend binary sensor that detects whether the temperature is rising/falling to a certain threshold
