@@ -1,0 +1,82 @@
+alias: INV-PerLED-LevelChange
+sequence:
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "64"
+      property_key: "65280"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "69"
+      property_key: "65280"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "74"
+      property_key: "65280"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "64"
+      property_key: "65280"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "84"
+      property_key: "65280"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "64"
+      property_key: "65280"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      value: 50
+      property: "94"
+      property_key: "65280"
+description: Pre set duration
+icon: mdi:arrow-up-down
+mode: single
