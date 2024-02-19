@@ -1,0 +1,87 @@
+# This is done in the HomeAssistant UI and may not be correct for inputting directly into a YAML file. Although, it should be pritty simple.
+# All devices are redacted because...duh.
+# All commands use the `command_class: 112` & `endpoint: 0`. The rest are configurable per your device.
+# If you just need ONE device to do the thing, use the `zwave_js.set_value` command instead.
+# Current HA version: Core - 2024.1.3 | Sup: 2024.01.1 | OS: 11.4 | Frontend: 20240104.0
+
+alias: INV-Wthr-Falling-Notif
+description: Weather falling notification
+trigger:
+  - platform: time_pattern
+    minutes: "59"
+condition:
+  - condition: state
+    entity_id: binary_sensor.temp_falling
+    state: "on"
+    enabled: true
+action:
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 40
+      milliseconds: 0
+  - service: script.1708357612929
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: zwave_js.multicast_set_value
+    metadata: {}
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property: "97"
+      value: 0
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    alias: Set Default All LED Strip Brightness
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - service: script.inv_perled_levelchange
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: script.inv_perled_durationchange
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 20
+      milliseconds: 0
+  - service: script.inv_perled_durationreset
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: script.inv_perled_levelreset
+    metadata: {}
+    data: {}
+  - alias: Set Default All LED Strip Brightness
+    service: zwave_js.multicast_set_value
+    metadata: {}
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property: "97"
+      value: 50
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+mode: single
