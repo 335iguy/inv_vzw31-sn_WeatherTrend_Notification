@@ -1,0 +1,87 @@
+# This is done in the HomeAssistant UI and may not be correct for inputting directly into a YAML file. Although, it should be pritty simple.
+# All devices are redacted because...duh.
+# All commands use the `command_class: 112` & `endpoint: 0`. The rest are configurable per your device.
+# If you just need ONE device to do the thing, use the `zwave_js.set_value` command instead.
+# Current HA version: Core - 2024.1.3 | Sup: 2024.01.1 | OS: 11.4 | Frontend: 20240104.0alias: INV-Wthr-Rising-Effect
+alias: INV-Wthr-Falling-Effect
+icon: mdi:sun-snowflake
+description: Display temp on all Inovelli switches - change to falling
+sequence:
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "64"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "69"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "74"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "79"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "84"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "89"
+  - service: zwave_js.multicast_set_value
+    target:
+      device_id:
+        - [REDACTED]
+        - [REDACTED]
+    data:
+      command_class: "112"
+      endpoint: "0"
+      property_key: "4278190080"
+      value: 6
+      property: "94"
+mode: single
